@@ -23,14 +23,19 @@ class Destination extends Model
         'email',
         'website',
         'featured_image',
+        'gallery_images',
         'is_featured',
-        'is_active'
+        'is_active',
+        'youtube_url'
     ];
 
     protected $casts = [
         'is_featured' => 'boolean',
         'is_active' => 'boolean',
-        'entrance_fee' => 'decimal:2'
+        'latitude' => 'float',
+        'longitude' => 'float',
+        'entrance_fee' => 'float',
+        'gallery_images' => 'array',
     ];
 
     protected $appends = ['image_url'];

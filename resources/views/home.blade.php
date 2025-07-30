@@ -3,17 +3,27 @@
 @section('content')
 <div class="relative">
   <!-- Hero Section -->
-  <div class="relative h-[600px] bg-gradient-to-r from-blue-600 to-blue-800">
+  <div class="relative h-screen max-h-[800px] min-h-[600px] overflow-hidden">
+    <img
+      src="{{ asset('images/semarang-hero.jpg') }}"
+      alt="Semarang City"
+      class="w-full h-full object-cover object-[center_25%]"
+      loading="eager"
+      width="3328"
+      height="1872">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60"></div>
+
+    <!-- Content -->
     <div class="absolute inset-0 flex items-center">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
           Jelajahi Keindahan Kota Semarang
         </h1>
-        <p class="text-xl text-gray-200 mb-8">
-          Temukan destinasi wisata menarik dan pengalaman tak terlupakan di Kota Atlas
+        <p class="text-xl text-white mb-8 drop-shadow-md">
+          Temukan destinasi wisata menarik dan pengalaman tak terlupakan di Kota Semarang
         </p>
         <a href="{{ route('destinations.index') }}"
-          class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition duration-300">
+          class="inline-block bg-white/95 backdrop-blur-sm text-blue-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white transition duration-300 shadow-lg">
           Mulai Jelajahi
         </a>
       </div>
@@ -27,7 +37,11 @@
       @foreach($featuredCategories as $category)
       <a href="{{ route('categories.show', $category) }}"
         class="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-        <div class="relative h-48 bg-gray-200">
+        <div class="relative h-48">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <i class="{{ $category->icon ?? 'fas fa-map-marker-alt' }} text-6xl text-white opacity-80"></i>
+          </div>
           <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition duration-300"></div>
           <div class="absolute inset-0 flex items-center justify-center">
             <h3 class="text-2xl font-bold text-white">{{ $category->name }}</h3>
@@ -88,7 +102,7 @@
   <!-- Why Choose Us -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Mengapa Memilih Kami</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div class="text-center">
         <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
           <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,7 +120,7 @@
           </svg>
         </div>
         <h3 class="text-xl font-semibold text-gray-900 mb-2">Update Terkini</h3>
-        <p class="text-gray-600">Informasi destinasi selalu diperbarui secara berkala untuk memastikan keakuratan.</p>
+        <p class="text-gray-600">Informasi destinasi selalu diperbarui secara berkala untuk memastikan keakuratan. <a href="https://pariwisata.semarangkota.go.id/frontend/web/" target="_blank" class="text-blue-600 hover:text-blue-800">Lihat info terbaru di website resmi</a></p>
       </div>
       <div class="text-center">
         <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -116,6 +130,15 @@
         </div>
         <h3 class="text-xl font-semibold text-gray-900 mb-2">Ulasan Pengguna</h3>
         <p class="text-gray-600">Dapatkan informasi dari pengalaman nyata pengunjung sebelumnya.</p>
+      </div>
+      <div class="text-center">
+        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Pemesanan Tiket</h3>
+        <p class="text-gray-600">Pesan tiket dengan mudah melalui berbagai platform seperti Traveloka, Tiket.com, dan platform lainnya.</p>
       </div>
     </div>
   </div>

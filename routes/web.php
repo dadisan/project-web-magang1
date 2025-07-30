@@ -6,6 +6,7 @@ use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -29,10 +30,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Admin routes
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::group(['middleware' => ['auth', \App\Http\Middleware\AdminMiddleware::class], 'prefix' => 'admin'], function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     // Destination management
     Route::get('/destinations/create', [DestinationController::class, 'create'])->name('destinations.create');
