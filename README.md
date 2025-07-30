@@ -240,5 +240,4 @@ Project ini dilisensikan di bawah [MIT License](https://opensource.org/licenses/
 
 <div align="center">
   <p>Made with ❤️ for Semarang Tourism</p>
-  <p>Part of MSIB Golang Developer With AI And Computer Vision Expertise Program</p>
 </div>
